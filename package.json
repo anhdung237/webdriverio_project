@@ -1,0 +1,22 @@
+{
+  "name": "webdriverio_project",
+  "version": "1.0.0",
+  "description": "demo project using webdriverIO to test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anhdung237/webdriverio_project.git"
+  },
+  "author": "Dung Pham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anhdung237/webdriverio_project/issues"
+  },
+  "homepage": "https://github.com/anhdung237/webdriverio_project#readme",
+  "devDependencies": {
+    "webdriverio": "^4.9.11"
+  }
+}
