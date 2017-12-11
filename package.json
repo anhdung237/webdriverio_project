@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/anhdung237/webdriverio_project#readme",
   "devDependencies": {
+    "wdio-cucumber-framework": "^1.0.2",
+    "wdio-selenium-standalone-service": "0.0.9",
     "webdriverio": "^4.9.11"
   }
 }
