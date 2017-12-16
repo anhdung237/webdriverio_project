@@ -7,10 +7,10 @@ var page = require('../../pages/page');
 defineSupportCode (function ({Then}) {
     
     Then(/^I see the user icon with name "([^"]*)"$/, function (name) {
-        expect(mainPage.username(name).waitForVisible()).toBe(true);
+        expect(mainPage.username(name).waitForVisible()).to.be.true;
     });
 
     Then(/^I see the page "([^"]*)" displayed$/, function (page) {
-        expect(mainPage.isPageDisplayed(page)).toBe(true);
+        expect(mainPage.isPageDisplayed(page)).to.be.true;
     });
 });

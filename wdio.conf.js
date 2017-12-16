@@ -124,7 +124,7 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: http://webdriver.io/guide/reporters/dot.html
-    // reporters: ['dot'],//
+    reporters: ['dot'],//
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
         require: [
@@ -155,6 +155,20 @@ exports.config = {
     // it and to build services around it. You can either apply a single function or an array of
     // methods to it. If one of them returns with a promise, WebdriverIO will wait until that promise got
     // resolved to continue.
+
+    // Gets executed before test execution begins. At this point you can access
+    // all global variables, such as `browser`. It is the perfect place to
+    // define custom commands.
+    before: function before() {
+        /**
+         * Setup the Chai assertion framework
+         */
+        const chai = require('chai');
+
+        global.expect = chai.expect;
+        global.assert = chai.assert;
+        global.should = chai.should();
+    },
     /**
      * Gets executed once before all workers get launched.
      * @param {Object} config wdio configuration object
