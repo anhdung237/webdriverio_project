@@ -1,3 +1,5 @@
+var path = require("path");
+
 exports.config = {
     
     //
@@ -124,7 +126,18 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: http://webdriver.io/guide/reporters/dot.html
-    reporters: ['dot'],//
+
+    // // đang dùng 3 loại reports spec, json và cucumber cùng 1 lúc với nhau và cả 3 loại đểu chạy tốt
+    // reporters: ['spec', 'json', 'cucumber'],//
+    // reporterOptions: {
+    //     outputDir: './jsonReport/'
+    // },
+
+    // đây là report mặc định của WebdriverIO, nó chính là dot report
+    // reporters: ['dot'],
+
+    reporters: ['cucumber'],//
+    
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
         require: [
