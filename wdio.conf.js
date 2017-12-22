@@ -74,6 +74,13 @@ exports.config = {
     //
     // Saves a screenshot to a given path if a command fails.
     screenshotPath: './errorShots/',
+
+    screenshotOnReject: true,
+
+    screenshotOnReject: {
+        connectionRetryTimeout: 30000,
+        connectionRetryCount: 0
+    },
     //
     // Set a base URL in order to shorten url command calls. If your `url` parameter starts
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
@@ -285,4 +292,9 @@ exports.config = {
      */
     // onComplete: function(exitCode, config, capabilities) {
     // }
+
+
+    onError: function() {
+        browser.saveScreenshot('./snapshot.png');
+      }
 }
