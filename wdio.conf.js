@@ -74,13 +74,7 @@ exports.config = {
     //
     // Saves a screenshot to a given path if a command fails.
     screenshotPath: './errorShots/',
-
-    screenshotOnReject: true,
-
-    screenshotOnReject: {
-        connectionRetryTimeout: 30000,
-        connectionRetryCount: 0
-    },
+    
     //
     // Set a base URL in order to shorten url command calls. If your `url` parameter starts
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
@@ -294,7 +288,27 @@ exports.config = {
     // }
 
 
-    onError: function() {
-        browser.saveScreenshot('./snapshot.png');
-      }
+     /**
+     * This function is used to capture image when Cucumber step is failed
+     * Follow link https://github.com/webdriverio/webdriverio/issues/2190 and fgiroud's comment 
+     */
+
+    afterStep: function afterStep(stepResult) {
+        if (stepResult.status != "passed") {
+            var path = browser.options.screenshotPath;
+            var featureName = stepResult.step.scenario.uri
+                .replace(process.cwd(), "")
+                .split("/")
+                .join("_")
+                .replace(".feature", "");
+
+            var fileName =
+                path +
+                "/ERROR_" +
+                browser.options.desiredCapabilities.browserName +
+                featureName +
+                ".png";
+            browser.saveScreenshot(fileName);
+        }
+    },
 }
