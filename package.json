@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/anhdung237/webdriverio_project#readme",
   "devDependencies": {
+    "appium": "^1.7.1",
     "chai": "~4.1.2",
+    "wdio-appium-service": "^0.2.3",
     "wdio-browserstack-service": "^0.1.13",
     "wdio-cucumber-framework": "^1.0.2",
     "wdio-cucumber-reporter": "~0.0.2",

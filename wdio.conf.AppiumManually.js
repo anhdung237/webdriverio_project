@@ -34,20 +34,37 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    maxInstances: 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
+    
+    /**
+     * Follow the link https://github.com/amiya-pattnaik/webdriverIO-with-cucumberBDD/blob/master/test/config/suite.appium.conf.js
+     * to setup running test cases on mobile but we have to start Appium manually
+     * 
+     */
     capabilities: [{
-        // maxInstances can get overwritten per capability. So if you have an in-house Selenium
-        // grid with only 5 firefox instances available you can make sure that not more than
-        // 5 instances get started at a time.
-        maxInstances: 5,
-        //
-        browserName: 'chrome'
+        appiumVersion: '1.7.1',
+        platformVersion: '7.0',
+        platformName: 'Android',
+        browserName: 'chrome',
+        deviceName: 'Android Emulator',
+        chromeOptions: {
+            args: ['--no-managed-user-acknowledgment-check', '--no-user-gesture-required', '--oobe-force-show-screen ⊗']
+          },
     }],
+
+    /**
+     * in link https://github.com/amiya-pattnaik/webdriverIO-with-cucumberBDD/blob/master/test/config/suite.appium.conf.js
+     * it sets the host is host: '0.0.0.0',  but it does not run
+     * we change host to: host: '127.0.0.1', and it runs 
+     */    
+    host: '127.0.0.1',
+    port: '4723',
+
     //
     // ===================
     // Test Configurations
@@ -116,6 +133,26 @@ exports.config = {
     // commands. Instead, they hook themselves up into the test process.
     services: ['selenium-standalone'],//
     seleniumLogs: './logs',
+
+    // services: ['appium'],
+    
+    //   appium: {
+    //     args: {
+    //       address: '127.0.0.1',
+    //       commandTimeout: '7200',
+    //       sessionOverride: true,
+    //       debugLogSpacing: true,
+    //       platformVersion: '7.0',
+    //       platformName: 'Android',
+    //       browserName: 'Chrome',
+    //       showIosLog: true,
+    //     //   deviceName: 'iPhone 6',
+    //     //   nativeInstrumentsLib: true,
+    //     //   isolateSimDevice: true,
+    //     //   app: APP_PATH
+    //     }
+    //   },
+
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
     // see also: http://webdriver.io/guide/testrunner/frameworks.html
@@ -291,6 +328,7 @@ exports.config = {
      /**
      * This function is used to capture image when Cucumber step is failed
      * Follow link https://github.com/webdriverio/webdriverio/issues/2190 and fgiroud's comment 
+     * This function can capture screenshot on mobile when test is failed on mobile
      */
 
     afterStep: function afterStep(stepResult) {
